@@ -1,0 +1,13 @@
+<launch>
+	<!-- <param name="robot_description" textfile="$(find my_robot_description)/urdf/robot_base.urdf" /> -->
+	<param name="robot_description" textfile="$(find my_robot_description)/urdf/robot_with_kinect.urdf" />
+
+	<!-- robot_state_publisher节点，发布 TF Tree  -->
+	<node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
+
+	<!-- 发布关节状态的节点，可以通过 ui 控制 -->
+	<node name="joint_state_publisher_gui" pkg="joint_state_publisher_gui" type="joint_state_publisher_gui" />
+	
+	<!-- rviz可视化界面 -->
+	<node name="rviz" pkg="rviz" type="rviz" args="-d $(find my_robot_description)/config/config.rviz" required="true" />
+</launch>
