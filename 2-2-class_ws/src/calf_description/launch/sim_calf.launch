@@ -1,0 +1,20 @@
+<launch>
+  <!-- 定义 gazebo 参数变量 -->
+  <arg name="gazebo_world" default="$(find calf_description)/worlds/room.world" />
+  <arg name="use_sim_time" default="true"/>
+
+  <!-- 定义 ROS 参数 -->
+  <param name="robot_description" command="rosrun xacro xacro '$(find calf_description)/urdf/calf.xacro'" />
+  <!-- 使用 gazebo 发布的时间 topic，而不是系统时间 -->
+  <param name="use_sim_time" value="$(arg use_sim_time)" />
+  
+  <!-- 启动 gazebo -->
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+      <arg name="world_name" value="$(arg gazebo_world)"/>
+      <arg name="use_sim_time" value="$(arg use_sim_time)"/>
+  </include>
+
+  <!-- 在 gazebo 中加载机器人 -->
+  <node name="spawn_model" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
+        args="-urdf -param robot_description -model calf" />
+</launch>
