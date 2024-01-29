@@ -1,0 +1,27 @@
+<launch>
+  <!-- gazebo 参数 -->
+  <arg name="gazebo_world" default="office_small.world" />
+
+  <!-- 机器人生成位置 -->
+  <arg name="spawn_xyz" default="-x 0 -y 0 -z 0"/>
+
+  <!-- 机器人模型 -->
+  <param name="robot_description" command="$(find xacro)/xacro $(find jackal_description)/urdf/jackal.urdf.xacro" />
+  
+  <!-- 启动 gazebo -->
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+      <arg name="world_name" value="$(arg gazebo_world)"/>
+      <arg name="use_sim_time" value="true"/>
+  </include>
+
+  <!-- 在 gazebo 中加载机器人 -->
+  <node name="spawn_model" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
+        args="-urdf -param robot_description $(arg spawn_xyz) -model jackal" />
+
+  <!-- 加载控制器参数，并启动 gazebo 控制器 -->
+  <rosparam command="load" file="$(find robot_sim)/config/control.yaml" />
+  <node name="controller_spawner" pkg="controller_manager" type="spawner" args="joint_publisher velocity_controller" />
+
+  <!-- 键盘控制节点 -->
+  <include file="$(find robot_sim)/launch/teleop_key.launch" />
+</launch>
