@@ -4,6 +4,13 @@
 * x-x-home_work_ws：x-x作业的实例代码
 ### 使用说明
 1. clone 仓库：先 cd 到存放仓库的目录，再执行命令：
+    
+    Gitee 仓库：
+    ```bash
+    git clone https://gitee.com/zixiao_bios/RoboClass01-Code.git
+    ```
+
+    Github 仓库：
     ```bash
     git clone https://github.com/zixiao-bios/RoboClass01-Code.git
     ```
