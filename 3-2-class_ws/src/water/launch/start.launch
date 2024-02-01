@@ -1,0 +1,13 @@
+<launch>
+  <param name="/std_dev" value="10" />
+
+  <node name="water_sim" pkg="water" type="water.py" />
+
+  <node name="temp_sensor" pkg="water" type="temp_sensor.py" />
+
+  <node name="temp_filter" pkg="water" type="temp_filter.py" >
+    <param name="x0" value="0" />
+  </node>
+
+  <node name="plot" pkg="rqt_plot" type="rqt_plot" args="/water_temp /temp_sensor /temp_filtered" required="true" />
+</launch>
