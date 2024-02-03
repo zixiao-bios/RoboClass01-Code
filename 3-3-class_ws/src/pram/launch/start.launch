@@ -1,0 +1,31 @@
+<launch>
+    <param name="dt" value="0.1" />
+
+    <!-- 传感器标准差 -->
+    <param name="gps_std_dev" value="0.8" />
+    <param name="odom_std_dev" value="0.6" />
+
+    <!-- 仿真节点 -->
+    <node name="pram_sim" pkg="pram" type="pram.py" >
+        <!-- 指定加速度数组文件 -->
+        <param name="accelerations_file" value="$(find pram)/data/accelerations.npy" />
+
+        <!-- 实际的过程噪声 -->
+        <param name="p_std_dev" value="0.2" />
+        <param name="v_std_dev" value="0.1" />
+    </node>
+
+    <!-- 传感器节点 -->
+    <node name="gps" pkg="pram" type="gps.py" />
+    <node name="odom" pkg="pram" type="odom.py" />
+
+    <!-- 滤波器节点 -->
+    <node name="filter" pkg="pram" type="filter.py" output="screen">
+        <!-- 估计的过程噪声 -->
+        <param name="p_std_dev" value="0.2" />
+        <param name="v_std_dev" value="0.1" />
+    </node>
+
+    <node name="plot_p" pkg="rqt_plot" type="rqt_plot" args="/p /p_gps /p_est" required="true" />
+    <node name="plot_v" pkg="rqt_plot" type="rqt_plot" args="/v /v_odom /v_est" required="true" />
+</launch>
