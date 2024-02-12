@@ -109,13 +109,13 @@ def main():
     current_dir_path = Path(__file__).resolve().parent
 
     # 加载训练集，参数：数据集的本地路径、使用训练集还是测试集、不下载数据集、数据预处理流程
-    train_dataset = datasets.MNIST(root=str(current_dir_path / 'data'), 
+    train_dataset = datasets.MNIST(root=str(current_dir_path / '..' / 'data'), 
                                    train=True, 
                                    download=False, 
                                    transform=transforms.ToTensor())
     
     # 加载测试集，参数含义同上
-    test_dataset = datasets.MNIST(root=str(current_dir_path / 'data'), 
+    test_dataset = datasets.MNIST(root=str(current_dir_path / '..' / 'data'), 
                                   train=False, 
                                   download=False, 
                                   transform=transforms.ToTensor())
