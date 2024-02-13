@@ -43,6 +43,9 @@ def train(model, device, train_loader, optimizer, epoch, loss_func, writer: Summ
         # 使用网络中的梯度更新参数
         optimizer.step()
 
+        # 写入tensorboard
+        writer.add_scalar(f'loss_epoch_{epoch}', loss.item(), batch_idx)
+
         # 每100次循环打印一次
         if batch_idx % 100 == 0:
             print(f"训练轮次: {epoch} [{batch_idx * len(data)}/{len(train_loader.dataset)}] 损失: {loss.item():.6f}")

@@ -7,7 +7,7 @@ from torch.utils.tensorboard import SummaryWriter
 from mlp import SimpleMLP
 
 # 权重文件的文件名
-weights_file = '1707793727_epoch_10.pt'
+weights_file = '1707816318_epoch_4.pt'
 
 # 获取权重文件的路径
 current_dir_path = Path(__file__).resolve().parent
@@ -28,7 +28,7 @@ def get_input_data(input_imgs_dir, img_size):
         # 变为灰度图
         transforms.Grayscale(), 
         # 修改尺寸
-        transforms.Resize(img_size), 
+        transforms.Resize(img_size, antialias=True), 
     ])
 
     # 读取输入图片，并进行预处理
