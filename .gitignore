@@ -1,3 +1,6 @@
 .vscode
 build
 devel
+runs
+weights
+__pycache__
