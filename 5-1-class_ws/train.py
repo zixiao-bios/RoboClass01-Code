@@ -137,7 +137,7 @@ def main():
     writer = SummaryWriter(comment='_train')
 
     # 记录模型结构图
-    writer.add_graph(model, input_to_model=torch.rand(1, 28, 28))
+    writer.add_graph(model, input_to_model=torch.rand(1, 1, 28, 28))
 
     weights_save_dir = current_dir_path / 'weights'
     weights_save_dir.mkdir(exist_ok=True)
