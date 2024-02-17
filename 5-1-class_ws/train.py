@@ -101,6 +101,9 @@ def test(model, device, test_loader, epoch, loss_func, writer: SummaryWriter = N
 
 
 def main():
+    # 本次训练的名称
+    name = 'test'
+
     # 设置设备
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
@@ -134,7 +137,7 @@ def main():
     optimizer = optim.SGD(model.parameters(), lr=0.01)
 
     # tensorboard
-    writer = SummaryWriter(comment='_train')
+    writer = SummaryWriter(comment=f'_{name}')
 
     # 记录模型结构图
     writer.add_graph(model, input_to_model=torch.rand(1, 1, 28, 28))
@@ -143,7 +146,7 @@ def main():
     weights_save_dir.mkdir(exist_ok=True)
 
     # 运行训练和测试
-    for epoch in range(1, 100):  # 总共训练5轮
+    for epoch in range(1, 6):  # 总共训练5轮
         # 进行一轮训练
         train_loss = train(model, device, train_loader, optimizer, epoch, loss_func, writer)
 
@@ -158,7 +161,7 @@ def main():
         writer.add_scalar('accuracy', test_data['accuracy'], epoch)
 
         # 保存该epoch的模型权重
-        torch.save(model.state_dict(), weights_save_dir / f'{int(time.time())}_epoch_{epoch}.pt')
+        torch.save(model.state_dict(), weights_save_dir / f'{int(time.time())}_{name}_epoch_{epoch}.pt')
 
     writer.close()
 
