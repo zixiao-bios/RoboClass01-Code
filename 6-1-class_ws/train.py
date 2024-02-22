@@ -138,13 +138,13 @@ def main():
     writer = SummaryWriter(comment='_train_LeNet5')
 
     # 记录模型结构图
-    writer.add_graph(model, input_to_model=torch.rand(1, 1, 28, 28))
+    writer.add_graph(model, input_to_model=torch.rand(1, 1, 28, 28).to(device))
 
     weights_save_dir = current_dir_path / 'weights'
     weights_save_dir.mkdir(exist_ok=True)
 
     # 运行训练和测试
-    for epoch in range(1, 10):  # 总共训练5轮
+    for epoch in range(1, 6):  # 总共训练5轮
         # 进行一轮训练
         train_loss = train(model, device, train_loader, optimizer, epoch, loss_func, writer)
 

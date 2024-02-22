@@ -7,7 +7,6 @@ from torch.utils.tensorboard import SummaryWriter
 from cnn import SimpleCNN, LeNet5
 
 # 权重文件的文件名
-# weights_file = '1707838716_epoch_9.pt'
 weights_file = '1707839915_epoch_5.pt'
 
 # 获取权重文件的路径
@@ -73,7 +72,6 @@ def main():
 
     for i in range(10):
         mask = (pred.view(-1) == i)
-        print(mask.sum())
         if mask.sum() > 0:
             writer.add_images(f'num={i}', data[mask])
 
