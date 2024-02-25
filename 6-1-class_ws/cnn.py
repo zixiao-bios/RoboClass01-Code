@@ -4,6 +4,7 @@ import torch.nn as nn
 class SimpleCNN(nn.Module):
     def __init__(self):
         super(SimpleCNN, self).__init__()
+        # 1*28*28
 
         self.conv1 = nn.Sequential(
             nn.Conv2d(
@@ -13,14 +14,20 @@ class SimpleCNN(nn.Module):
                 stride=1, 
                 padding=2, 
             ), 
+            # 16*28*28
             nn.ReLU(), 
+            # 16*28*28
             nn.MaxPool2d(kernel_size=2), 
+            # 16*14*14
         )
 
         self.conv2 = nn.Sequential(
             nn.Conv2d(16, 32, 5, 1, 2), 
+            # 32*14*14
             nn.ReLU(), 
+            # 32*14*14
             nn.MaxPool2d(2), 
+            # 32*7*7
         )
 
         # fully connected layer, output 10 classes
