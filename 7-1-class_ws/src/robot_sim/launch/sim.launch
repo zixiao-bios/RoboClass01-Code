@@ -3,7 +3,7 @@
 
   <!-- gazebo 参数 -->
   <!-- <arg name="gazebo_world" default="office_small.world" /> -->
-  <arg name="gazebo_world" default="$(find robot_sim)/worlds/home2.world" />
+  <arg name="gazebo_world" default="$(find robot_sim)/worlds/home.world" />
 
   <!-- 机器人生成位置 -->
   <arg name="spawn_xyz" default="-x 0 -y 0 -z 0"/>
@@ -55,7 +55,4 @@
   </group>
 
   <node name="controller_spawner" pkg="controller_manager" type="spawner" args="joint_publisher velocity_controller" />
-
-  <!-- 键盘控制节点 -->
-  <include file="$(find robot_sim)/launch/teleop_key.launch" />
 </launch>

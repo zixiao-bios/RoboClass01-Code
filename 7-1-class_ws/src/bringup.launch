@@ -1,0 +1,4 @@
+<launch>
+  <include file="$(find jackal_description)/launch/description.launch" />
+  <include file="$(find detection)/launch/detect.launch" />
+</launch>
