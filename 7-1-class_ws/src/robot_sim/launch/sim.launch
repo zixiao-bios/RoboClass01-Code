@@ -1,14 +1,14 @@
 <launch>
-  <arg name="use_fusion_odom" value="true" />
+  <arg name="use_fusion_odom" value="false" />
 
   <!-- gazebo 参数 -->
   <!-- <arg name="gazebo_world" default="office_small.world" /> -->
-  <!-- <arg name="gazebo_world" default="$(find robot_sim)/worlds/home.world" /> -->
-  <arg name="gazebo_world" default="$(find robot_sim)/worlds/runway.world" />
+  <arg name="gazebo_world" default="$(find robot_sim)/worlds/home.world" />
+  <!-- <arg name="gazebo_world" default="$(find robot_sim)/worlds/runway.world" /> -->
 
   <!-- 机器人生成位置 -->
-  <!-- <arg name="spawn_xyz" default="-x 0 -y 0 -z 0"/> -->
-  <arg name="spawn_xyz" value="-x -6 -y -2 -z 1"/>
+  <arg name="spawn_xyz" default="-x 0 -y 0 -z 0"/>
+  <!-- <arg name="spawn_xyz" value="-x -6 -y -2 -z 1"/> -->
 
   <!-- 机器人模型 -->
   <param name="robot_description" command="$(find xacro)/xacro $(find jackal_description)/urdf/jackal.urdf.xacro" />
