@@ -275,7 +275,7 @@ Visualization Manager:
   Global Options:
     Background Color: 48; 48; 48
     Default Light: true
-    Fixed Frame: odom
+    Fixed Frame: map
     Frame Rate: 30
   Name: root
   Tools:
@@ -308,10 +308,10 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Scale: 42.98170852661133
+      Scale: 59.69300079345703
       Target Frame: <Fixed Frame>
-      X: 3.3931901454925537
-      Y: 3.8645551204681396
+      X: 5.717340469360352
+      Y: 2.691115379333496
     Saved: ~
 Window Geometry:
   Displays:
@@ -329,5 +329,5 @@ Window Geometry:
   Views:
     collapsed: false
   Width: 2758
-  X: 59
-  Y: 54
+  X: 274
+  Y: 289

@@ -9,4 +9,7 @@
 
   <!-- AMCL 定位 -->
   <include file="$(find mapping)/launch/amcl.launch" />
+
+  <!-- move_base 导航 -->
+  <include file="$(find robot_nav)/launch/move_base.launch" />
 </launch>
