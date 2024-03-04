@@ -1,5 +1,5 @@
 <launch>
-  <arg name="use_fusion_odom" value="false" />
+  <arg name="use_fusion_odom" value="true" />
 
   <!-- gazebo 参数 -->
   <!-- <arg name="gazebo_world" default="office_small.world" /> -->

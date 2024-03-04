@@ -5,7 +5,7 @@
   <include file="$(find detection)/launch/detect.launch" />
 
   <!-- Gmapping 建图 -->
-  <!-- <include file="$(find mapping)/launch/gmapping.launch" /> -->
+  <include file="$(find mapping)/launch/gmapping.launch" />
 
   <!-- AMCL 定位 -->
   <!-- <include file="$(find mapping)/launch/amcl.launch" /> -->
